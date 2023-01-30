@@ -44,4 +44,4 @@ jobs:
       - name: curl
         uses: wei/curl@v1
         with:
-          args: https://app.bitrise.io/app/2b1937a9057b68e6/build/start.json -L --data '{"hook_info":{"type":"bitrise","build_trigger_token":"7OOFi7NKcDKT2gSXZdBAMQ"},"build_params":{"branch":"main","commit_message":"Triggered by GH Action Workflow","workflow_id":"primary"},"triggered_by":"curl"}
+          args: https://app.bitrise.io/app/2b1937a9057b68e6/build/start.json -L --data '{"hook_info":{"type":"bitrise","build_trigger_token":"7OOFi7NKcDKT2gSXZdBAMQ"},"build_params":{"branch":"main","commit_message":"Triggered by GH Action Workflow - Build ${{ github.run_number }}","workflow_id":"primary"},"triggered_by":"curl"}
