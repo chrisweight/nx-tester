@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "t-and-t",
+  "npmScope": "nx-tester",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
