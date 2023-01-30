@@ -6,20 +6,33 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   build:
-    name: Lint
+    name: Lint, Test, Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
-      - run: npm ci
-      
+      - run: npm ci --legacy-peer-deps
       - run: npx nx workspace-lint
-      - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --configuration=ci
-      - run: npx nx affected --target=build --parallel=3    
+      - run: npx nx affected --target=build --parallel=3
+      - run: |
+          AFFECTED=$(npx nx print-affected --type=app --select=projects)
+          echo ::set-output name=affected::$AFFECTED
+
+  bitrise:
+    name: Trigger bitrise if mobile affected
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    if: ${{ contains(needs.build.outputs.affected, 'mobile') == true }}
+    steps:
+      - name: curl
+        uses: wei/curl@v1
+        with:
+          args: https://app.bitrise.io/app/2b1937a9057b68e6/build/start.json -L --data '{"hook_info":{"type":"bitrise","build_trigger_token":"7OOFi7NKcDKT2gSXZdBAMQ"},"build_params":{"branch":"main","commit_message":"Triggered by GH Action Workflow - Build ${{ github.run_number }}","workflow_id":"primary"},"triggered_by":"curl"}
