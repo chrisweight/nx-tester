@@ -28,8 +28,7 @@ jobs:
   bitrise:
     name: Trigger bitrise if mobile affected
     runs-on: ubuntu-latest
-    needs:
-      - build
+    needs: build
     if: contains(needs.build.outputs.affected, 'mobile')
     steps:
       - name: curl
