@@ -1,0 +1,9 @@
+{
+  "name": "mobile",
+  "devDependencies": {
+    "@capacitor/cli": "4.6.2"
+  },
+  "nx": {
+    "tags": ["scope:mobile"]
+  }
+}
