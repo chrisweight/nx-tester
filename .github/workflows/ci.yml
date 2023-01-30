@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
-    if: contains(needs.build.outputs.affected, 'mobile')
+    if: ${{ contains(needs.build.outputs.affected, 'mobile') == true }}
     steps:
       - name: curl
         uses: wei/curl@v1
