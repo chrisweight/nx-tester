@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 't-and-t-root',
+  selector: 'mobile-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })

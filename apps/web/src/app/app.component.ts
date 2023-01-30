@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
+import { FooType } from '@shared/data-access';
 
 @Component({
-  selector: 't-and-t-root',
+  selector: 'web-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'web';
+  fooInstance: FooType = {
+    id: 0,
+    name: 'Foo',
+    description: 'Mobile Foo'
+  }
 }

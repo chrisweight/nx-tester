@@ -9,7 +9,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "tAndT",
+            "prefix": "sharedUtils",
             "style": "camelCase"
           }
         ],
@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "t-and-t",
+            "prefix": "shared-utils",
             "style": "kebab-case"
           }
         ]
