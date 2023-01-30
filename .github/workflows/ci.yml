@@ -23,14 +23,14 @@ jobs:
       - run: npx nx affected --target=build --parallel=3
       - run: |
           AFFECTED=$(npx nx print-affected --type=app --select=projects)
-          echo ::set-output name=affected::$AFFECTED
+          echo "affected::$AFFECTED" >> $GITHUB_OUTPUT
 
   bitrise:
     name: Trigger bitrise if mobile affected
     runs-on: ubuntu-latest
     needs:
       - build
-    if: ${{ contains(needs.build.outputs.affected, 'mobile') == true }}
+    if: contains(needs.build.outputs.affected, 'mobile')
     steps:
       - name: curl
         uses: wei/curl@v1
