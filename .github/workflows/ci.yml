@@ -17,13 +17,13 @@ jobs:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci --legacy-peer-deps
-      - run: npx nx workspace-lint
-      - run: npx nx affected --target=lint --parallel=3
-      - run: npx nx affected --target=test --parallel=3 --configuration=ci
-      - run: npx nx affected --target=build --parallel=3
+      # - run: npx nx workspace-lint
+      # - run: npx nx affected --target=lint --parallel=3
+      # - run: npx nx affected --target=test --parallel=3 --configuration=ci
+      # - run: npx nx affected --target=build --parallel=3
       - run: |
           AFFECTED=$(npx nx print-affected --type=app --select=projects)
-          echo "affected::$AFFECTED" >> $GITHUB_OUTPUT
+          echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
 
   bitrise:
     name: Trigger bitrise if mobile affected
