@@ -22,7 +22,7 @@ jobs:
       - run: npx nx affected --target=test --parallel=3 --configuration=ci
       - run: npx nx affected --target=build --parallel=3
       - run: |
-          $AFFECTED=$(npx nx print-affected --type=app --select=projects)
+          AFFECTED=$(npx nx print-affected --type=app --select=projects)
           echo ::set-output name=affected::$AFFECTED
 
   bitrise:
