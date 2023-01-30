@@ -17,29 +17,21 @@ jobs:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci --legacy-peer-deps
-
       - run: npx nx workspace-lint
       # - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --configuration=ci
       - run: npx nx affected --target=build --parallel=3
-
-  should-trigger-mobile:
-    name: Check Mobile affected
-    runs-on: ubuntu-latest
-    needs:
-      - build
-    steps:
-        - run: |
-            $AFFECTED=$(npx nx print-affected --type=app --select=projects)
-            echo ::set-output name=affected::$AFFECTED
+      - run: |
+          $AFFECTED=$(npx nx print-affected --type=app --select=projects)
+          echo ::set-output name=affected::$AFFECTED
 
   bitrise:
     name: Trigger bitrise if mobile affected
     runs-on: ubuntu-latest
     needs:
-      - should-trigger-mobile
-    if: contains(needs.should-trigger-mobile.outputs.affected, 'mobile')
+      - build
+    if: contains(needs.build.outputs.affected, 'mobile')
     steps:
       - name: curl
         uses: wei/curl@v1
