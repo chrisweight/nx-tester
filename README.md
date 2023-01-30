@@ -1,4 +1,6 @@
-# TAndT
+# NXT-ester
+
+[![Build Status](https://app.bitrise.io/app/2b1937a9057b68e6/status.svg?token=bgsCNDNC2vCu8kslzTeO2w&branch=main)](https://app.bitrise.io/app/2b1937a9057b68e6)
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
