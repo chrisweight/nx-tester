@@ -10,6 +10,6 @@ export class AppComponent {
   fooInstance: FooType = {
     id: 0,
     name: 'Foo',
-    description: 'Mobile Foo'
+    description: 'Web Foo'
   }
 }
